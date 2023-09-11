@@ -1,0 +1,63 @@
+/**
+ * rdate 2023-09-11
+ * create by podonghee
+ * version 1.0.0
+ *
+ * RM-COMMON
+ * REST MODULE
+ */
+buildscript {
+    ext {
+        springBootVersion = '2.4.2'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+        classpath "io.spring.gradle:dependency-management-plugin:1.0.11.RELEASE"
+    }
+}
+allprojects {
+    repositories {
+        maven { url 'https://jitpack.io' }
+    }
+}
+apply plugin: 'java'
+apply plugin: 'java-library'
+apply plugin: 'idea'
+apply plugin: 'groovy'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+repositories {
+    mavenCentral()
+}
+bootJar {
+    enabled = false
+}
+jar {
+    enabled = true
+}
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+
+dependencies {
+    implementation 'com.github.dev-mylo:rm-common-core:v1.1.1-release1'
+    compileOnly 'org.projectlombok:lombok:1.18.20'
+    annotationProcessor 'org.projectlombok:lombok:1.18.20'
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+
+    implementation group: 'org.bgee.log4jdbc-log4j2', name: 'log4jdbc-log4j2-jdbc4', version: '1.16'
+
+
+    implementation 'com.github.dev-mylo:rm-common-core:v1.1.1-release1'
+    /*    implementation 'org.springframework.boot:spring-boot-starter'*/
+    api group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+    // https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui
+    api group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
+
+
+    implementation 'org.apache.httpcomponents:httpclient:4.5'
+}
+
