@@ -57,7 +57,7 @@ public class RestApiService<T> {
             throw new RmCommonException((String) resultData.get("message"));
         }
 
-        return resultData.get("resultData");
+        return resultData.get("data");
 
     }
     private HttpHeaders getHttpHeaders(String contentsType, String token) {
